@@ -1,0 +1,12 @@
+p {
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: "Verdana", sans-serif;
+}
+body {
+    background-image: linear-gradient(#a7d2f1, #16adee);
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'Verdana', sans-serif;
+}
