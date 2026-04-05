@@ -41,7 +41,7 @@ d3.json("scatterplot_json").then(function(loadedData) {
     
     const data = loadedData; // delivered information is now going to be called data
 
-    let svg = d3.select("#vis") //put the image in the body part 
+    let svg = d3.select("#scatterplot") //put the image in the body part 
               .append("svg")
               .attr("width", width) // what you defined earlier 
               .attr("height", height)

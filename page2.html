@@ -5,22 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel = 'stylesheet' href = 'style.css'>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 
 <body>
-    <nav>
-        <a href = 'index.html'>Back to Home Page</a>
-    </nav>
+    <button id = "navigateButton">Back to Home Page </button>
+    <script>
+    const navigateButton = document.getElementById("navigateButton")
+    navigateButton.addEventListener("click", function(){
+        // Make sure this matches your actual file name exactly!
+        window.location.href = "index.html"; 
+    })
+    </script>
     <h1 style="font-size: 26px; text-align: center;" >Visual Analysis</h1>
+
+
+
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 50px;">
+
+    <div style="flex: 2; min-width: 500px;">
+        <iframe src="jitterplot.html" width="100%" height="900px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+    </div>
+
+    <div style="flex: 1; margin-left: -180px;">
+        <p style="margin-left: -150px; line-height: 1.6; font-size: 14px;">
+        Now that we’ve established variables, this visualization aims to look at the relationship between the hospital’s clinical 
+        operating margin with the type of control and the hospital size (based on number of beds). The clinical operating margin is 
+        the net income from service to patients divided by the total revenue. In other words, it represents what percent of money was 
+        made from actually treating patients. This is relevant to look at in comparison to the hospital’xs control type and size because 
+        the clinical operating margin is not only explained by the hospital size as expected by economic theories but the control type 
+        may also play a factor. The first key takeaway is that a larger hospital size does not automatically guarantee a higher clinical
+        operating margin. While the theory of economies of scale suggests that more beds should lower costs and increase revenue per 
+        patient, the Jitter Plot reveals that this efficiency doesn't always translate into profit. Large hospitals are not always 
+        associated with a higher clinical margin because institutional factors, like the hospital's mission, can override the financial 
+        benefits of being big.The second takeaway is that proprietary hospitals, which are those typically run by corporations for profit, 
+        cluster more towards a higher clinical margin especially for those that are partnership or corporation based. Finally, for the 
+        government owned hospitals, they are clustered towards the negative clinical operation margin. Public and county hospitals face 
+        the highest financial risk. Because they often serve as "safety nets" for uninsured or underinsured patients, their clinical 
+        operating margins are volatile and frequently negative.
+
+        </p>
+    </div>
+
+</div>
 
     
 
-    <div style="display: flex; justify-content: center; width: 100%;">
-    <div id="vis">
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 50px;">
+
+    <div id="scatterplot" style="width: 45%; flex-shrink: 0;">
+        <style>
+            /* This forces the SVG inside the div to shrink to fit the 45% width */
+            #scatterplot svg {
+                width: 100% !important;
+                height: auto !important;
+            }
+        </style>
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="main.js"></script>
     </div>
+
+    <div style="flex: 1;">
+        <p style="margin: 0; line-height: 1.6; font-size: 14px;">
+        Now that we’ve looked at how control types contribute to hospital cost efficiency and financial performance as well as size,
+        we can start to look at how hospitals perform regionally. This visualization aims to to look at the relationship between hospital 
+        size (via number of beds) and the cost to charge ratio among different regions in the United States. The cost to charge ratio 
+        (CCR) is the total operating costs of the hospital divided by the amount that they bill for the services. In other words, a high 
+        CCR (above 1) means that the costs for that hospital are a lot more than they are charging and a low CCR means that the hospital 
+        is charging a lot more than what the service actually costs (which is how they make a profit). The first key takeaway from this 
+        visualization is that generally as the number of beds increases, the CCR decreases, following the evidence of economies of scale. 
+        Small hospitals are financially volatile; while some are efficient, many of the dots have ratios above 0.8. The second key 
+        takeaway is the rural hospitals (blue) dominate the high CCR zone, while the urban hospitals (orange) are more concentrated in the 
+        low CCR zone. For the same hospital size, looking at the 0-200 bed range, the urban hospitals are seen mostly concentrated at the 
+        top, while rural hospitals, although seen towards the bottom as well, predominantly stay towards the top. This indicates region 
+        plays a role in the hospital cost efficiency as being a small hospital seems to be even harder in a rural area most likely because 
+        there is lower patient volume and higher difficulty recruiting staff.  
+
+        </p>
     </div>
+
+</div>
+
+
+
+
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 50px;">
+
+    <div style="flex: 2; min-width: 500px;">
+        <iframe src="choropleth_map.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+    </div>
+
+    <div style="flex: 1;">
+        <p style="margin: 0; line-height: 1.6; font-size: 14px;">
+        Now that we’ve established variables, this visualization aims to look at the relationship between the hospital’s clinical 
+        operating margin with the type of control and the hospital size (based on number of beds). The clinical operating margin is 
+        the net income from service to patients divided by the total revenue. In other words, it represents what percent of money was 
+        made from actually treating patients. This is relevant to look at in comparison to the hospital’xs control type and size because 
+        the clinical operating margin is not only explained by the hospital size as expected by economic theories but the control type 
+        may also play a factor. The first key takeaway is that a larger hospital size does not automatically guarantee a higher clinical
+        operating margin. While the theory of economies of scale suggests that more beds should lower costs and increase revenue per 
+        patient, the Jitter Plot reveals that this efficiency doesn't always translate into profit. Large hospitals are not always 
+        associated with a higher clinical margin because institutional factors, like the hospital's mission, can override the financial 
+        benefits of being big.The second takeaway is that proprietary hospitals, which are those typically run by corporations for profit, 
+        cluster more towards a higher clinical margin especially for those that are partnership or corporation based. Finally, for the 
+        government owned hospitals, they are clustered towards the negative clinical operation margin. Public and county hospitals face 
+        the highest financial risk. Because they often serve as "safety nets" for uninsured or underinsured patients, their clinical 
+        operating margins are volatile and frequently negative.
+
+        </p>
+    </div>
+
+</div>
+
 
 
 

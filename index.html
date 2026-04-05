@@ -9,9 +9,7 @@
 </head>
 
 <body>
-    <nav>
-        <a href = 'page2.html'>Go to visualizations</a>
-    </nav>
+    
 
     <h1 style="font-size: 26px; text-align: center;" >The Impact of Hospital Size on Cost Efficiency and Financial Performance: Examining Regional and Ownership Patterns</h1>
 
@@ -51,10 +49,14 @@
 
    </p>
 
-    <div id = 'contact'>
-        <h2>IF WANT FOOTNOTE BLURB</h2>
+   <button id = "navigateButton">Go to Visualizations </button>
+    <script>
+    const navigateButton = document.getElementById("navigateButton")
+    navigateButton.addEventListener("click", function(){
+        // Make sure this matches your actual file name exactly!
+        window.location.href = "page2.html"; 
+    })
+    </script>
 
-    </div>
-    
 </body>
 </html>

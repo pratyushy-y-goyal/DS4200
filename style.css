@@ -4,9 +4,17 @@ p {
     font-family: "Verdana", sans-serif;
 }
 body {
-    background-image: linear-gradient(#a7d2f1, #16adee);
+    background-image: linear-gradient(#d2e3ee, #a0d6ed);
     background-attachment: fixed; 
     background-repeat: no-repeat;
     min-height: 100vh;
     font-family: 'Verdana', sans-serif;
 }
+
+.left-img {
+    float: left;
+    width: 200px;        
+    margin-left: 20px;   
+    margin-bottom: 20px; 
+    border-radius: 10px; 
+  }
