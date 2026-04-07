@@ -21,14 +21,14 @@
     <h1 style="font-size: 26px; text-align: center;" >Visual Analysis</h1>
 
 
-<div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 50px;">
+<div class="viz-section">
 
-    <div style="flex: 2; min-width: 500px;">
+    <div class="viz-frame">
         <iframe src="heatmap.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
     </div>
 
-    <div style="flex: 1;">
-        <p style="margin: 0; line-height: 1.6; font-size: 14px;">
+    <div class="viz-text">
+        <p>
         This correlation matrix reveals the relationships between the different variables that we work with
         and analyze throughout this project. During our analysis, we explore both strong and weak correlations and
         their relationships with categorical, non-quantitative data. The strongest relationship highlighted by this visualizaiton 
@@ -49,14 +49,14 @@
 
 
 
-<div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 50px;">
+<div class="viz-section">
 
-    <div style="flex: 2; min-width: 500px;">
-        <iframe src="jitterplot.html" width="100%" height="900px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+    <div class="viz-frame">
+        <iframe src="jitterplot.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
     </div>
 
-    <div style="flex: 1;">
-        <p style="margin: 0; line-height: 1.6; font-size: 14px;">
+    <div class="viz-text">
+        <p>
         Now that we’ve established variables, this visualization aims to look at the relationship between the hospital’s clinical 
         operating margin with the type of control and the hospital size (based on number of beds). The clinical operating margin is 
         the net income from service to patients divided by the total revenue. In other words, it represents what percent of money was 
@@ -79,11 +79,9 @@
 
     
 
-<div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 50px;">
-
-    <div id="scatterplot" style="width: 45%; flex-shrink: 0;">
+<div class="viz-section">
+    <div class="viz-frame" id="scatterplot">
         <style>
-            /* This forces the SVG inside the div to shrink to fit the 45% width */
             #scatterplot svg {
                 width: 100% !important;
                 height: auto !important;
@@ -92,9 +90,8 @@
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="main.js"></script>
     </div>
-
-    <div style="flex: 1;">
-        <p style="margin: 0; line-height: 1.6; font-size: 14px;">
+    <div class="viz-text">
+        <p>
         Now that we’ve looked at how control types contribute to hospital cost efficiency and financial performance as well as size,
         we can start to look at how hospitals perform regionally. This visualization aims to to look at the relationship between hospital 
         size (via number of beds) and the cost to charge ratio among different regions in the United States. The cost to charge ratio 
@@ -117,14 +114,14 @@
 
 
 
-<div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 50px;">
+<div class="viz-section">
 
-    <div style="flex: 2; min-width: 500px;">
+    <div class="viz-frame">
         <iframe src="choropleth_map.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
     </div>
 
-    <div style="flex: 1;">
-        <p style="margin: 0; line-height: 1.6; font-size: 14px;">
+    <div class="viz-text">
+        <p>
         Now that we’ve established variables, this visualization aims to look at the relationship between the hospital’s clinical 
         operating margin with the type of control and the hospital size (based on number of beds). The clinical operating margin is 
         the net income from service to patients divided by the total revenue. In other words, it represents what percent of money was 

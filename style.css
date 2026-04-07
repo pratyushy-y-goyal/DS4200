@@ -19,6 +19,34 @@ body {
     border-radius: 10px; 
   }
 
+
+.viz-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 50px;
+    padding: 0 50px;
+}
+
+.viz-frame {
+    flex: 0 0 60%;
+}
+
+.viz-text {
+    flex:1;
+    padding-top: 10px;
+}
+
+.viz-text p {
+    margin-left: 0;
+    margin-right:0;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+
+
   nav {
     background-color: #2c3e50;
     padding: 15px 30px;
