@@ -29,7 +29,18 @@
 
     <div style="flex: 1;">
         <p style="margin: 0; line-height: 1.6; font-size: 14px;">
-        WRITE PARA FOR HEATMAP!
+        This correlation matrix reveals the relationships between the different variables that we work with
+        and analyze throughout this project. During our analysis, we explore both strong and weak correlations and
+        their relationships with categorical, non-quantitative data. The strongest relationship highlighted by this visualizaiton 
+        is between Total Assets and Total Liabilities with a score of 0.91, meaning that hospitals with more assets tend to carry more
+        liabilities, reflecting that growth is often financed through leverage. While a strong correlation, this relationship does not
+        povide meaningful insights on the financial sustainability of hospitals within the United States, so we do not
+        soend time analyzing this relationship later in our graphs. The second strongest correlation is between Number of Beds
+        and Net Patient Revenue with a score of 0.84, meaning that bed count is a strong indicator for revenue for hospitals across
+        the United States. Notably, Cost per Discharge shows almost no correlation with hospital size, challenging the assumption that larger 
+        hospitals are more efficient on a per patient basis, which is a relationship that is explored further through the cost-to-charge ratio
+        analysis. Similarly, Operating Margin has almost no correlation with any other numerical metric. However, we will later explore the
+        relationship between Operating Margin and different categorical variables.
 
         </p>
     </div>
@@ -41,7 +52,7 @@
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 50px;">
 
     <div style="flex: 2; min-width: 500px;">
-        <iframe src="jitterplot.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+        <iframe src="jitterplot.html" width="100%" height="900px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
     </div>
 
     <div style="flex: 1;">
