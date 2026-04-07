@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #vis.vega-embed{
+            width: 100% !important;
+            display: flex;
+            justify-content: center;
+            padding: 0 !important;
+        }
+        #vis svg {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+    </style>    
+    <script src ="https://cdn.jsdelivr.net/npm/vega@6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+</head>
+<body>
+    <div id = "vis"></div>
+    <script>
+        const colorOrder = [
+            "Number of Beds", "Cost of Discharge", "Cost per Bed", "FTE per Bed", "Operating Margin", "Occupancy Rate", "Net Income", "Total Costs", "Net Patient Revenue"
+        ];
+
+        d3.csv("Cleaned_DF_Hospital_Provider_Cost_Report_2023.csv").then(function(raw) {
+            const data = raw.mao(d => ({
+                "Number of Beds":       +d["Number of Beds"],
+                "Cost per Discharge":   +d["Total Costs"] / +d["Total Discharges (V + XVIII + XIX + Unknown)"],
+                "Cost per Bed":         +d["Total Costs"] / +d["Number of Beds"],
+                "FTE per Bed":          +d["FTE - Employees on Payroll"] / +d["Number of Beds"],
+                "Operating Margin":     +d["Net Income"] / +d["Net Patient Revenue"],
+                "Occupancy Rate":       +d["Total Days (V + XVIII + XIX + Unknown)"] / +d["Total Bed Days Available"],
+                "Net Income":           +d["Net Income"],
+                "Total Costs":          +d["Total Costs"],
+                "Net Patient Revenue":  +d["Net Patient Revenue"]
+            })).filter(d =>
+                colorOrder.every(k => d[k] != null && isFinite(d[k]))
+                );
+
+                function corr(arr, col1, col2){
+                    const n = arr.length;
+                    const mean1 = arr.reduce((s, d) => s+d[col1], 0) / n;
+                    const mean2 = arr.reduce((s, d) => s+d[col2], 0) / n;
+                    let num = 0, den1 = 0, den2 = 0;
+                    arr.forEach(d => {
+                        const a = d[col1] - mean1, b= d[col2] - mean2;
+                        num += a*b;
+                        den1 += a*a;
+                        den2 += b*b;
+                    });
+                    return Math.round((num / Math.sqrt(den1 * den2)) *100) / 100;
+                }
+
+
+                const corrData = [];
+                colorOrder.forEach(v1 => {
+                    colorOrder.forEach(v2 => {
+                        colorData.push({"Variable 1": v1, "Variable 2": v2, "Correlation": corr(data, v1, v2)});
+                    });
+                });
+
+                const spec = {
+                    "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+                    "config": { "view": { "continuousWidth": 300, "continuousHeight": 300 } },
+                    "data": { "values": corrData },
+                    "encoding": {
+                        "x": {"field": "Variable 1", "type": "nominal", "sort": "colorOrder", "axis": {"title":null}},
+                        "tooltip":[
+                            {"field": "Variable 1", "type":"nominal"},
+                            {"field": "Variable 2", "type":"nominal"},
+                            {"field":"Correlation", "type": "quantitative", "format": ".2f"}
+                        ]
+                    },
+                    "layer": [
+                        {
+                            "mark":"rect",
+                            "encoding": {
+                                "color": {
+                                    "field": "Correlation", "type", "quantitative",
+                                    "scale": {"scheme": "redblue", "domain": [-1, 1]},
+                                    "legend": {"title": "Correlation"}
+                                }
+                            }
+                        },
+                        {
+                            "mark": {"type":"text", "fontSize": 11, "fontWeight": "bold"},
+                            "encoding": {
+                                "text": {"field": "Correlation", "type": "quantitative", "format": ".2f"},
+                                "color": {
+                                    "condition": {"test": "abs(datum.Correlation) > 0.5", "value": "white"},
+                                    "value": "black"
+                                }
+                            }
+                        }
+                    ],
+                    "title": {"text": "Metric Correlation Heatmap", "fontSize": 15, "anchor": "middle"},
+                    "width": 500,
+                    "height": 500
+                };
+
+                vegaembed("#vis", spec, {mode: "vega-lite"});
+        });
+    </script>
+</body>
+</html>
+
+
