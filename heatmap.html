@@ -24,11 +24,11 @@
     <div id = "vis"></div>
     <script>
         const colorOrder = [
-            "Number of Beds", "Cost of Discharge", "Cost per Bed", "FTE per Bed", "Operating Margin", "Occupancy Rate", "Net Income", "Total Costs", "Net Patient Revenue"
+            "Number of Beds", "Cost per Discharge", "Cost per Bed", "FTE per Bed", "Operating Margin", "Occupancy Rate", "Net Income", "Total Costs", "Net Patient Revenue"
         ];
 
-        d3.csv("Cleaned_DF_Hospital_Provider_Cost_Report_2023.csv").then(function(raw) {
-            const data = raw.mao(d => ({
+        d3.csv("Hospital_Provider_Cost_Report_2023_updated.csv").then(function(raw) {
+            const data = raw.map(d => ({
                 "Number of Beds":       +d["Number of Beds"],
                 "Cost per Discharge":   +d["Total Costs"] / +d["Total Discharges (V + XVIII + XIX + Unknown)"],
                 "Cost per Bed":         +d["Total Costs"] / +d["Number of Beds"],
@@ -60,7 +60,7 @@
                 const corrData = [];
                 colorOrder.forEach(v1 => {
                     colorOrder.forEach(v2 => {
-                        colorData.push({"Variable 1": v1, "Variable 2": v2, "Correlation": corr(data, v1, v2)});
+                        corrData.push({"Variable 1": v1, "Variable 2": v2, "Correlation": corr(data, v1, v2)});
                     });
                 });
 
@@ -69,7 +69,8 @@
                     "config": { "view": { "continuousWidth": 300, "continuousHeight": 300 } },
                     "data": { "values": corrData },
                     "encoding": {
-                        "x": {"field": "Variable 1", "type": "nominal", "sort": "colorOrder", "axis": {"title":null}},
+                        "x": {"field": "Variable 1", "type": "nominal", "sort": colorOrder, "axis": {"title":null}},
+                        "y": {"field": "Variable 2", "type": "nominal", "sort": colorOrder, "axis": {"title": null}},
                         "tooltip":[
                             {"field": "Variable 1", "type":"nominal"},
                             {"field": "Variable 2", "type":"nominal"},
@@ -81,7 +82,7 @@
                             "mark":"rect",
                             "encoding": {
                                 "color": {
-                                    "field": "Correlation", "type", "quantitative",
+                                    "field": "Correlation", "type": "quantitative",
                                     "scale": {"scheme": "redblue", "domain": [-1, 1]},
                                     "legend": {"title": "Correlation"}
                                 }
@@ -103,7 +104,7 @@
                     "height": 500
                 };
 
-                vegaembed("#vis", spec, {mode: "vega-lite"});
+                vegaEmbed("#vis", spec, {mode: "vega-lite"});
         });
     </script>
 </body>
