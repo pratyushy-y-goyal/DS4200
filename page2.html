@@ -39,18 +39,18 @@
 
     <div class="viz-text">
         <p>
-        This correlation matrix reveals the relationships between the different variables that we work with
-        and analyze throughout this project. During our analysis, we explore both strong and weak correlations and
-        their relationships with categorical, non-quantitative data. The strongest relationship highlighted by this visualizaiton 
-        is between Total Assets and Total Liabilities with a score of 0.91, meaning that hospitals with more assets tend to carry more
-        liabilities, reflecting that growth is often financed through leverage. While a strong correlation, this relationship does not
-        povide meaningful insights on the financial sustainability of hospitals within the United States, so we do not
-        soend time analyzing this relationship later in our graphs. The second strongest correlation is between Number of Beds
-        and Net Patient Revenue with a score of 0.84, meaning that bed count is a strong indicator for revenue for hospitals across
-        the United States. Notably, Cost per Discharge shows almost no correlation with hospital size, challenging the assumption that larger 
-        hospitals are more efficient on a per patient basis, which is a relationship that is explored further through the cost-to-charge ratio
-        analysis. Similarly, Operating Margin has almost no correlation with any other numerical metric. However, we will later explore the
-        relationship between Operating Margin and different categorical variables.
+        This correlation matrix reveals the relationships between the different variables that we work with and analyze
+        throughout this project. During our analysis, we explore both strong and weak correlations and their relationships
+        with categorical, non-quantitative data. The strongest meaningful relationship highlighted by this visualization
+        is between Total Costs and Net Patient revenue with a score of 0.97, indicating that revenue and costs scale almost
+        perfectly together across hospitals. Number of Beds is also strongly correlated with both Total Costs and Net Patient
+        Revenue with respective scores of 0.86 and 0.84, meaning that bed count is a strong indicator of both the scale of operations
+        and revenue generation. Notably, Cost per Discharge shows almost no correlation with hospital size, challenging the 
+        assumption that larger hospitals are more efficient on a per-patient basis, which is a relationship we explore further
+        through the cost-to-charge ratio analysis. Clinical Operating Margin and Operating Expense Ratio show a perfect inverse
+        correlation of -1.00, as they are derived from the same underling values, so we exclude this relationship from further
+        analysis. On the other hand, both margin metrics have almost no correlation with any other numerical variable. However,
+        we will later explore the relationship between Clinical Operating Margin and different categorical variables.
 
         </p>
     </div>
