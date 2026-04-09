@@ -1,30 +1,30 @@
-let width = 600,
-    height = 400;
+let width = 800,
+    height = 500;
 
 let margin = { top: 50, bottom: 50, left: 60, right: 60 };
 
 d3.json("scatterplot_json").then(function(loadedData) {
     
-    // All your D3 drawing code MUST go inside this block
-    // because it waits for the file to finish downloading.
+    // // All your D3 drawing code MUST go inside this block
+    // // because it waits for the file to finish downloading.
 
-    const logA = 0.8;   
-    const logB = -0.09; 
+    // const logA = 0.8;   
+    // const logB = -0.09; 
 
-    // Update your lineData block to look like this:
-    const lineData = d3.range(1, 2800, 10).map(x => {
-        return {
-            xValue: x,
-            // Replace the 1.5 and 0.2 with logA and logB
-        yValue: logA + logB * Math.log(x)
-    };
-        }).filter(d => d.yValue >= 0); // This keeps it from drooping below the X-axis!
+    // // Update your lineData block to look like this:
+    // const lineData = d3.range(1, 2800, 10).map(x => {
+    //     return {
+    //         xValue: x,
+    //         // Replace the 1.5 and 0.2 with logA and logB
+    //     yValue: logA + logB * Math.log(x)
+    // };
+    //     }).filter(d => d.yValue >= 0); // This keeps it from drooping below the X-axis!
 
-    // 2. Define the line generator
-    const logLine = d3.line()
-        .x(d => xScale(d.xValue))
-        .y(d => yScale(d.yValue))
-        .curve(d3.curveMonotoneX); // This makes the line smooth
+    // // 2. Define the line generator
+    // const logLine = d3.line()
+    //     .x(d => xScale(d.xValue))
+    //     .y(d => yScale(d.yValue))
+    //     .curve(d3.curveMonotoneX); // This makes the line smooth
 
     const tooltip = d3.select("body")
         .append("div")
@@ -45,10 +45,10 @@ d3.json("scatterplot_json").then(function(loadedData) {
               .append("svg")
               .attr("width", width) // what you defined earlier 
               .attr("height", height)
-              .style('background', "#fff5e9")
+              .style('background', "#fcfcfc")
 
     let yScale = d3.scaleLinear()
-              .domain([0, d3.max(data, d => d["Cost To Charge Ratio"])]) // this is the maximum value of the data])
+              .domain([0, d3.max(data, d => d["Operating Expense Ratio"])]) // this is the maximum value of the data])
               .range([height - margin.bottom, margin.top]) //how the coordinates change based on the data 
 
     let yAxis = svg.append("g")
@@ -84,7 +84,7 @@ d3.json("scatterplot_json").then(function(loadedData) {
         .attr("y", margin.left / 3) 
         .style("text-anchor", "middle") 
         .style("font-size", "14px")
-        .text("Cost to Charge Ratio")
+        .text("Operating Expense Ratio")
 
     svg.append("text")
         .attr("x", width / 2)
@@ -92,31 +92,31 @@ d3.json("scatterplot_json").then(function(loadedData) {
         .attr("text-anchor", "middle")
         .style("font-size", "15px")
         .style("font-weight", "bold")
-        .text("Association between Number of Beds and Cost-to-Charge Ratio")
+        .text("Association between Number of Beds and Operating Expense Ratio")
 
     let circle = svg.selectAll("circle")
                 .data(data)
                 .enter()
                 .append("circle")
                 .attr("cx", d => xScale(d["Number of Beds + Total for all Subproviders"])) // location x and y are defined by the data
-                .attr("cy", d => yScale(d["Cost To Charge Ratio"]))
+                .attr("cy", d => yScale(d["Operating Expense Ratio"]))
                 .attr("r", 1.5)
                 .attr("fill", d => colorScale(d["Rural Versus Urban"])) 
                 .attr("opacity", 0.7); // Makes overlapping dots easier to see
     
-    svg.append("path")
-        .datum(lineData)
-        .attr("fill", "none")
-        .attr("stroke", "black")
-        .attr("stroke-width", 2)
-        .attr("d", logLine)
+    // svg.append("path")
+    //     .datum(lineData)
+    //     .attr("fill", "none")
+    //     .attr("stroke", "black")
+    //     .attr("stroke-width", 2)
+    //     .attr("d", logLine)
 
     circle
         .on("mouseover", function(event, d) {
         tooltip.style("visibility", "visible")
                 .html(`<strong>Beds:</strong> ${d["Number of Beds + Total for all Subproviders"]}<br>
-                        <strong>Ratio:</strong> ${d["Cost To Charge Ratio"]}<br>
-                        <strong>Hospital Name:</strong> ${d["Hospital Name"]}<br>
+                        <strong>Ratio:</strong> ${d["Operating Expense Ratio"]}<br>
+                        <strong>Hospital Name:</strong> ${d["Type of Control"]}<br>
                         <strong>Region:</strong> ${regionMap[d["Rural Versus Urban"]]}<br>`);
         })
         .on("mousemove", function(event) {
@@ -129,7 +129,7 @@ d3.json("scatterplot_json").then(function(loadedData) {
     
     const legend = svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(475, 70)")
+        .attr("transform", "translate(700, 70)")
         .style("z-index", "10"); // Ensure it stays on top
 
     colorScale.domain().forEach((d, i) => {

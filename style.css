@@ -19,18 +19,8 @@ body {
     border-radius: 10px; 
   }
 
-
-.viz-section {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 30px;
-    margin-bottom: 50px;
-    padding: 0 50px;
-}
-
 .viz-frame {
-    flex: 0 0 60%;
+    flex: 1.5;
 }
 
 .viz-text {
@@ -69,3 +59,16 @@ body {
     padding: 30px 60px;
     margin-top: 60px;
   }
+
+  
+.viz-section {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: top; 
+    gap: 40px; 
+    background: linear-gradient(to left, #c1deec, #ffffff);
+    padding: 30px;
+    margin: 40px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Soft shadow for a modern look */
+}
