@@ -6,16 +6,16 @@ import numpy as np
 
 df = pd.read_csv("/Users/elizabethc/ds4200/Group Project - ds4200/Hospital_Provider_Cost_Report_2023_updated.csv")
 
-df['FTE per Bed'] = df['FTE - Employees on Payroll'] / df['Number of Beds']
+df['FTE - Employees on payroll'] = df['FTE - Employees on Payroll']
 
-df_clean = df[['Hospital Name', 'Number of Beds', 'FTE per Bed', 'Rural Versus Urban']].replace(
+df_clean = df[['Hospital Name', 'Number of Beds', 'FTE - Employees on payroll', 'Rural Versus Urban']].replace(
     [np.inf, -np.inf], np.nan).dropna()
 
 df_clean = df_clean[
     (df_clean['Number of Beds'] > 0) &
     (df_clean['Number of Beds'] < 2000) &
-    (df_clean['FTE per Bed'] > 0) &
-    (df_clean['FTE per Bed'] < 20)
+    (df_clean['FTE - Employees on payroll'] > 0) &
+    (df_clean['FTE - Employees on payroll'] < 30000)
 ]
 
 df_clean['Location'] = df_clean['Rural Versus Urban'].map({'R': 'Rural', 'U': 'Urban'})
@@ -25,15 +25,15 @@ heatmap = alt.Chart(df_clean).mark_rect().encode(
     x=alt.X('Number of Beds:Q',
             bin=alt.Bin(maxbins=40),
             title='Number of Beds (Hospital Size)'),
-    y=alt.Y('FTE per Bed:Q',
+    y=alt.Y('FTE - Employees on payroll:Q',
             bin=alt.Bin(maxbins=40),
-            title='FTE per Bed (Staffing Density)'),
+            title='FTE - Employees on payroll'),
     color=alt.Color('count():Q',
                     scale=alt.Scale(scheme='blues'),
                     title='Number of Hospitals'),
     tooltip=[
         alt.Tooltip('Number of Beds:Q', bin=True, title='Beds Range'),
-        alt.Tooltip('FTE per Bed:Q', bin=True, title='FTE/Bed Range'),
+        alt.Tooltip('FTE - Employees on payroll:Q', bin=True, title='FTE - Employees on payroll'),
         alt.Tooltip('count():Q', title='Number of Hospitals')
     ]
 )
@@ -41,7 +41,7 @@ heatmap = alt.Chart(df_clean).mark_rect().encode(
 chart = heatmap.properties(
     title=alt.TitleParams(
         text='Staffing Density vs. Hospital Size',
-        subtitle='Density of hospitals by FTE per Bed and Number of Beds',
+        subtitle='Density of hospitals by FTE on Payroll and Number of Beds',
         fontSize=15,
         subtitleFontSize=12,
         anchor='middle'
