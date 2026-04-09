@@ -66,16 +66,15 @@
 
     <div class="viz-text">
         <p>
-        This jitter plot investigates the Clinical Operating Margin—the percentage of profit derived specifically from patient care—to uncover the drivers of financial 
+        This jitter plot investigates the Clinical Operating Margin, which is the percentage of profit derived specifically from patient care, to uncover the drivers of financial 
         health that hospital size failed to explain. Our initial heatmap analysis revealed that Bed Count and Operating Margin were largely uncorrelated; this visualization 
-        identifies Ownership Type as the primary factor filling that gap. The data confirms that an institution's mission is a far more potent predictor of margin than its 
-        scale: while there is subtle evidence of economies of scale within specific categories—seen where larger facilities (pink circles) cluster slightly further to the 
-        right than smaller ones (brown circles) in the proprietary rows—this "size boost" is secondary to the overall ownership mandate. Proprietary hospitals show a dense 
+        identifies Ownership Type as the primary factor filling that gap. The data confirms that an hospital's mission is a far more potent predictor of margin than its 
+        size: while there is subtle evidence of economies of scale within specific categories, as demonstrated where larger facilities (blue circles) cluster slightly further to the 
+        right than smaller ones (dark orange circles) in the proprietary rows. However, the size trend is secondary to the overall ownership patterns. Proprietary hospitals show a dense 
         concentration in the positive margin range regardless of bed count, whereas government-owned hospitals are consistently clustered in the negative zone, suggesting 
-        that the "safety net" mission creates a financial ceiling that even large-scale operations struggle to break. Ultimately, the plot demonstrates that because operating 
-        margin does not respond significantly to increases in size, a hospital’s financial trajectory is dictated first by its Institutional Strategy (Ownership) and only 
-        marginally by its physical capacity.
-
+        that because public hospitals must treat everyone regardless of cost, they face financial limits that even large-scale operations cannot overcome. Ultimately, the plot demonstrates that because clinical operating 
+        margin does not respond significantly to increases in size, ownership type could be an explanatory factor for a hospital's financial trajectory
+        
         </p>
     </div>
 
@@ -97,19 +96,14 @@
     </div>
     <div class="viz-text">
         <p>
-        Now that we’ve looked at how control types contribute to hospital cost efficiency and financial performance as well as size,
-        we can start to look at how hospitals perform regionally. This visualization aims to to look at the relationship between hospital 
-        size (via number of beds) and the cost to charge ratio among different regions in the United States. The cost to charge ratio 
-        (CCR) is the total operating costs of the hospital divided by the amount that they bill for the services. In other words, a high 
-        CCR (above 1) means that the costs for that hospital are a lot more than they are charging and a low CCR means that the hospital 
-        is charging a lot more than what the service actually costs (which is how they make a profit). The first key takeaway from this 
-        visualization is that generally as the number of beds increases, the CCR decreases, following the evidence of economies of scale. 
-        Small hospitals are financially volatile; while some are efficient, many of the dots have ratios above 0.8. The second key 
-        takeaway is the rural hospitals (blue) dominate the high CCR zone, while the urban hospitals (orange) are more concentrated in the 
-        low CCR zone. For the same hospital size, looking at the 0-200 bed range, the urban hospitals are seen mostly concentrated at the 
-        top, while rural hospitals, although seen towards the bottom as well, predominantly stay towards the top. This indicates region 
-        plays a role in the hospital cost efficiency as being a small hospital seems to be even harder in a rural area most likely because 
-        there is lower patient volume and higher difficulty recruiting staff.  
+        Now that we’ve established that ownership is a factor that determines financial performance, we also want to explore how the region affects the day-to-day cost pressures 
+        hospitals face. This scatterplot examines the relationship between hospital size and the Operating Expense Ratio (OER), encoding each point based on region. The OER is a metric to determine
+        how much profit a company retains after covering its daily operational costs. We chose to analyze OER because, like our earlier clincial operating margin analysis, it showed no strong correlation with size, which suggests other factors might be involved.
+        Even within the same ownership category, we see a wide spread of performance, suggesting that while ownership defines the strategy of the hospital, the region defines the opportunity. A "for-profit hospital" in a struggling rural area faces fundamentally different hurdles, such as 
+        low patient volume and high recruitment costs, than one in a thriving urban center. This is most visible in the 0–200 bed range, where rural hospitals (blue) 
+        predominantly occupy the "high-expense" zone above the 1.0 break-even line, while urban hospitals (orange) cluster toward the more efficient bottom. 
+        The big takeaway here is that being "big" does not make a hospital efficient; rather, being "urban" provides a volume-driven density advantage that rural hospitals 
+        simply cannot access, regardless of how many beds they add.
 
         </p>
     </div>
@@ -125,14 +119,13 @@
 
     <div class="viz-text">
         <p>
-        Now we are going to look at a more refined view of the regional trend by looking at the average net patient revenue per bed by state. In this map, we are averaging 
-        the net patient revenue per bed for all the hospitals in that particular state. The net patient revenue per bed allows us to look at a normalized metric that will 
-        standardize comparisons across states and takes into account both our financial performance and size metrics. The first key takeaway is that we can see there is a 
-        regional disparity in how much patient revenue each hospital bed generates. We can see deep greens in the Pacific Northwest as well as the Atlantic Northeast compared 
-        to the deep red in the South (Louisiana, Arkansas, Mississippi). Linking back to the scatterplot above, these deep red states most likely have higher concentrations of 
-        rural hospitals with high cost to charge ratios and more medicaid/uninsured patients. The second key takeaway is the map suggests that the hospital’s financial health is 
-        heavily tied to the state environment. Factors like medicaid policy and regional cost-of-living create a “revenue ceiling. For example, in the Pacific Northwest, the 
-        green color might not just indicate profit, but it also could indicate the high volume of cash required to keep a hospital running in a high-cost-of-living area. 
+        Now we are going to look at a more refined view of the regional trend by looking at the average Net Patient Revenue per Bed by state. Because our initial research showed that total revenue was 
+        highly correlated with the number of beds, we normalized the data to see the true value of a single bed in different parts of the country without the bias of hospital size. This map completes 
+        the puzzle by showing that each state has a revenue ceiling, which is the maximum amount of revenue a business can generate given its current capacity. We can see a massive disparity between the 
+        high-revenue Pacific Northwest and Northeast and the deep blue areas of the South, like Louisiana and Mississippi. These low-revenue states often have higher concentrations of rural hospitals 
+        that are already struggling with high costs and a large number of uninsured patients. The big takeaway here is that geography creates a hard revenue ceiling that overrides everything else; 
+        while ownership defines a hospital’s goals and size provides the scale, the regional environment ultimately defines the opportunity for survival. If a hospital is in a low-revenue state, it 
+        doesn't matter how large it grows or how much its owners want to make a profit, the money simply isn't there to be collected.
 
         </p>
     </div>
@@ -145,7 +138,12 @@
 </h2>
 
 <p>
-
+    The data consistently proves that we cannot expect hospitals to "size" their way out of a financial crisis. Because profitability is almost entirely decoupled from scale, simply adding more beds does 
+    not solve the underlying economic math that governs a hospital’s survival. Instead, we must address the Regional Disparities in revenue and the Ownership Mandates that force public and rural 
+    facilities into high-risk financial volatility. While a proprietary urban hospital might find success through market density, a rural government-owned facility is often trapped by a state-level 
+    revenue ceiling that no amount of expansion can break. To save the healthcare system, the focus must shift from physical expansion to state-level policy changes—such as Medicaid reform and targeted 
+    rural subsidies—that address the geographic and mission-driven hurdles these institutions face. Ultimately, if the goal is a stable healthcare system, we must stop building bigger hospitals and start 
+    building better policies that protect the facilities we already have.
 </p>
 
 <div id="authors">

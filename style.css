@@ -22,6 +22,7 @@ body {
 .viz-frame {
     flex: 1.5;
 }
+
 .viz-text {
     flex:1;
     padding-top: 10px;

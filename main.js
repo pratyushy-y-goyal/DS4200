@@ -116,7 +116,7 @@ d3.json("scatterplot_json").then(function(loadedData) {
         tooltip.style("visibility", "visible")
                 .html(`<strong>Beds:</strong> ${d["Number of Beds + Total for all Subproviders"]}<br>
                         <strong>Ratio:</strong> ${d["Operating Expense Ratio"]}<br>
-                        <strong>Hospital Name:</strong> ${d["Hospital Name"]}<br>
+                        <strong>Hospital Name:</strong> ${d["Type of Control"]}<br>
                         <strong>Region:</strong> ${regionMap[d["Rural Versus Urban"]]}<br>`);
         })
         .on("mousemove", function(event) {
