@@ -24,6 +24,16 @@
 <div class="viz-section">
 
     <div class="viz-frame">
+        <iframe src="staffing_scatter.html" width="100%" height="500px" frameborder="0" scrolling="no" style="overflow:hidden"></iframe>
+    </div>
+    <div class="viz-text">
+        WRITE PARA FOR SCATTERPLOT
+    </div>
+</div>
+
+<div class="viz-section">
+
+    <div class="viz-frame">
         <iframe src="heatmap.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
     </div>
 
@@ -51,37 +61,20 @@
 <div class="viz-section">
 
     <div class="viz-frame">
-        <iframe src="staffing_scatter.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden"></iframe>
-    </div>
-    <div class="viz-text">
-        WRITE PARA FOR SCATTERPLOT
-    </div>
-</div>
-
-
-
-<div class="viz-section">
-
-    <div class="viz-frame">
-        <iframe src="jitterplot.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+        <iframe src="jitterplot.html" width="100%" height="900px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
     </div>
 
     <div class="viz-text">
         <p>
-        Now that we’ve established variables, this visualization aims to look at the relationship between the hospital’s clinical 
-        operating margin with the type of control and the hospital size (based on number of beds). The clinical operating margin is 
-        the net income from service to patients divided by the total revenue. In other words, it represents what percent of money was 
-        made from actually treating patients. This is relevant to look at in comparison to the hospital’xs control type and size because 
-        the clinical operating margin is not only explained by the hospital size as expected by economic theories but the control type 
-        may also play a factor. The first key takeaway is that a larger hospital size does not automatically guarantee a higher clinical
-        operating margin. While the theory of economies of scale suggests that more beds should lower costs and increase revenue per 
-        patient, the Jitter Plot reveals that this efficiency doesn't always translate into profit. Large hospitals are not always 
-        associated with a higher clinical margin because institutional factors, like the hospital's mission, can override the financial 
-        benefits of being big.The second takeaway is that proprietary hospitals, which are those typically run by corporations for profit, 
-        cluster more towards a higher clinical margin especially for those that are partnership or corporation based. Finally, for the 
-        government owned hospitals, they are clustered towards the negative clinical operation margin. Public and county hospitals face 
-        the highest financial risk. Because they often serve as "safety nets" for uninsured or underinsured patients, their clinical 
-        operating margins are volatile and frequently negative.
+        This jitter plot investigates the Clinical Operating Margin—the percentage of profit derived specifically from patient care—to uncover the drivers of financial 
+        health that hospital size failed to explain. Our initial heatmap analysis revealed that Bed Count and Operating Margin were largely uncorrelated; this visualization 
+        identifies Ownership Type as the primary factor filling that gap. The data confirms that an institution's mission is a far more potent predictor of margin than its 
+        scale: while there is subtle evidence of economies of scale within specific categories—seen where larger facilities (pink circles) cluster slightly further to the 
+        right than smaller ones (brown circles) in the proprietary rows—this "size boost" is secondary to the overall ownership mandate. Proprietary hospitals show a dense 
+        concentration in the positive margin range regardless of bed count, whereas government-owned hospitals are consistently clustered in the negative zone, suggesting 
+        that the "safety net" mission creates a financial ceiling that even large-scale operations struggle to break. Ultimately, the plot demonstrates that because operating 
+        margin does not respond significantly to increases in size, a hospital’s financial trajectory is dictated first by its Institutional Strategy (Ownership) and only 
+        marginally by its physical capacity.
 
         </p>
     </div>
@@ -89,12 +82,13 @@
 </div>
 
     
-
 <div class="viz-section">
     <div class="viz-frame" id="scatterplot">
         <style>
             #scatterplot svg {
-                width: 100% !important;
+                display: block;
+                margin: 0 auto; /* Centers the graph */
+                max-width: 900px; /* Adjust this number to your preferred size */
                 height: auto !important;
             }
         </style>
@@ -123,12 +117,10 @@
 </div>
 
 
-
-
 <div class="viz-section">
 
     <div class="viz-frame">
-        <iframe src="choropleth_map.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+        <iframe src="choropleth_map.html" width="100%" height="500px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
     </div>
 
     <div class="viz-text">
@@ -147,8 +139,17 @@
 
 </div>
 
+
+<h2 style="text-align:center">
+    Conclusions
+</h2>
+
+<p>
+
+</p>
+
 <div id="authors">
-    <h2>Authors</h2>
+    <h3>Authors</h3>
     <p>Lily Wong | Elizabeth Colby | Pratyush Goyal</p>
 </div>
 

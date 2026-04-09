@@ -9,13 +9,17 @@
     display: flex;
     justify-content: center;
     padding: 0 !important;
-  }
-
-  /* This is the magic part: it scales the SVG like an image */
-  #vis svg {
-    max-width: 100% !important; 
+    /* ADD THESE TWO LINES BELOW */
+    margin-bottom: -20px !important; /* Negative margin pulls the next section UP */
     height: auto !important;
-  }
+    }
+
+    #vis svg {
+        max-width: 100% !important;
+        height: auto !important;
+        margin-bottom: 0 !important;
+        display: block; /* Ensures it doesn't have inline baseline spacing */
+    }
     
   </style>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@6"></script>
