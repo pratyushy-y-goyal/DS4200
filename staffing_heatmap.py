@@ -20,36 +20,28 @@ df_clean = df_clean[
 
 df_clean['Location'] = df_clean['Rural Versus Urban'].map({'R': 'Rural', 'U': 'Urban'})
 
-scatter = alt.Chart(df_clean).mark_circle(opacity=0.4, size=30, color='#4a90d9').encode(
+# Bin the axes for heatmap cells
+heatmap = alt.Chart(df_clean).mark_rect().encode(
     x=alt.X('Number of Beds:Q',
-            title='Number of Beds (Hospital Size)',
-            scale=alt.Scale(zero=False)),
+            bin=alt.Bin(maxbins=40),
+            title='Number of Beds (Hospital Size)'),
     y=alt.Y('FTE per Bed:Q',
-            title='FTE per Bed (Staffing Density)',
-            scale=alt.Scale(zero=False)),
+            bin=alt.Bin(maxbins=40),
+            title='FTE per Bed (Staffing Density)'),
+    color=alt.Color('count():Q',
+                    scale=alt.Scale(scheme='blues'),
+                    title='Number of Hospitals'),
     tooltip=[
-        alt.Tooltip('Hospital Name:N', title='Hospital'),
-        alt.Tooltip('Number of Beds:Q', title='Beds'),
-        alt.Tooltip('FTE per Bed:Q', title='FTE per Bed', format='.2f'),
-        alt.Tooltip('Location:N', title='Location')
+        alt.Tooltip('Number of Beds:Q', bin=True, title='Beds Range'),
+        alt.Tooltip('FTE per Bed:Q', bin=True, title='FTE/Bed Range'),
+        alt.Tooltip('count():Q', title='Number of Hospitals')
     ]
 )
 
-trend = alt.Chart(df_clean).mark_line(
-    strokeWidth=2.5,
-    strokeDash=[4, 2],
-    color='#e07b39'
-).transform_regression(
-    'Number of Beds', 'FTE per Bed'
-).encode(
-    x='Number of Beds:Q',
-    y='FTE per Bed:Q'
-)
-
-chart = (scatter + trend).properties(
+chart = heatmap.properties(
     title=alt.TitleParams(
         text='Staffing Density vs. Hospital Size',
-        subtitle='FTE per Bed across Hospitals',
+        subtitle='Density of hospitals by FTE per Bed and Number of Beds',
         fontSize=15,
         subtitleFontSize=12,
         anchor='middle'
@@ -61,5 +53,5 @@ chart = (scatter + trend).properties(
     titleFontSize=12
 )
 
-output_path = "/Users/elizabethc/ds4200/Group Project - ds4200/staffing_scatter.html"
+output_path = "/Users/elizabethc/ds4200/Group Project - ds4200/staffing_heatmap.html"
 chart.save(output_path)
