@@ -48,8 +48,8 @@ trend = alt.Chart(df_clean).mark_line(
 
 chart = (scatter + trend).properties(
     title=alt.TitleParams(
-        text='Staffing Density vs. Hospital Size by Location',
-        subtitle='FTE per Bed across Rural and Urban Hospitals',
+        text='Staffing Density vs. Hospital Size',
+        subtitle='FTE per Bed across Hospitals',
         fontSize=15,
         subtitleFontSize=12,
         anchor='middle'

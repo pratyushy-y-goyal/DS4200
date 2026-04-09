@@ -24,20 +24,20 @@
     <div id = "vis"></div>
     <script>
         const colorOrder = [
-            "Number of Beds", "Cost per Discharge", "Cost per Bed", "FTE per Bed", "Operating Margin", "Occupancy Rate", "Net Income", "Total Costs", "Net Patient Revenue"
+            "Number of Beds", "Cost per Discharge", "Cost per Bed", "FTE per Bed", "Clinical Operating Margin", "Occupancy Rate", "Net Income", "Total Costs", "Net Patient Revenue"
         ];
 
         d3.csv("Hospital_Provider_Cost_Report_2023_updated.csv").then(function(raw) {
             const data = raw.map(d => ({
-                "Number of Beds":       +d["Number of Beds"],
-                "Cost per Discharge":   +d["Total Costs"] / +d["Total Discharges (V + XVIII + XIX + Unknown)"],
-                "Cost per Bed":         +d["Total Costs"] / +d["Number of Beds"],
-                "FTE per Bed":          +d["FTE - Employees on Payroll"] / +d["Number of Beds"],
-                "Operating Margin":     +d["Net Income"] / +d["Net Patient Revenue"],
-                "Occupancy Rate":       +d["Total Days (V + XVIII + XIX + Unknown)"] / +d["Total Bed Days Available"],
-                "Net Income":           +d["Net Income"],
-                "Total Costs":          +d["Total Costs"],
-                "Net Patient Revenue":  +d["Net Patient Revenue"]
+                "Number of Beds":               +d["Number of Beds"],
+                "Cost per Discharge":           +d["Total Costs"] / +d["Total Discharges (V + XVIII + XIX + Unknown)"],
+                "Cost per Bed":                 +d["Total Costs"] / +d["Number of Beds"],
+                "FTE per Bed":                  +d["FTE - Employees on Payroll"] / +d["Number of Beds"],
+                "Clinical Operating Margin":    +d["Net Income from Service to Patients"] / +d["Net Patient Revenue"],
+                "Occupancy Rate":               +d["Total Days (V + XVIII + XIX + Unknown)"] / +d["Total Bed Days Available"],
+                "Net Income":                   +d["Net Income"],
+                "Total Costs":                  +d["Total Costs"],
+                "Net Patient Revenue":          +d["Net Patient Revenue"]
             })).filter(d =>
                 colorOrder.every(k => d[k] != null && isFinite(d[k]))
                 );
