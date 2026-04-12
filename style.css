@@ -32,7 +32,7 @@ body {
     margin-left: 0;
     margin-right:0;
     line-height: 1.6;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 
@@ -80,3 +80,27 @@ body {
     gap: 20px;              /* Adds a gap between the two charts */
     align-items: flex-start; /* Ensures they align at the top */
 }
+
+.viz-section-2 {
+        display: block !important; /* Forces vertical stacking */
+        width: 100%;
+        background: linear-gradient(to left, #c1deec, #ffffff); /* Your light blue */
+        padding: 30px;
+        box-sizing: border-box !important;    
+      }
+
+    .viz-frame-2 {
+        width: 100% !important;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .viz-frame-2 iframe {
+        display: block;
+        border: none;
+        /* Adjust 650px to fit your specific chart height so it doesn't scroll */
+        height: 650px; 
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }

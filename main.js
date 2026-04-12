@@ -207,6 +207,7 @@ d3.json("scatterplot_json").then(function(loadedData) {
             .attr("x", width/2)
             .attr("y", height - 10)
             .style("text-anchor", "middle")
+            .style("font-size", "14px")
             .text("Number of Beds");
 
         svg.append("text")
@@ -215,6 +216,16 @@ d3.json("scatterplot_json").then(function(loadedData) {
             .attr("text-anchor", "middle")
             .style("font-weight", "bold")
             .text(title);
+
+        svg.append("text")
+            .attr("transform", "rotate(-90)") 
+            .attr("y", margin.left / 4)        
+            .attr("x", -(height / 2))         
+            .attr("dy", "1em")                
+            .style("text-anchor", "middle")   
+            .style("font-size", "14px")
+            .style("fill", "black")
+            .text("Operating Expense Ratio");
 
         // 5. Circles
         svg.selectAll("circle")

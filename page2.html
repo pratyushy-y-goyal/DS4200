@@ -27,8 +27,9 @@
     </div>
     <div class="viz-text">
         <h1 style="font-size: 15px;">
-            Figure 1: Staffing Density Across Hospital 
+            Figure 1: Heatmap of Staffing Density Across Hospital 
         </h1>
+        <p>
         This visualization explores the relationship between the number of beds in a certain hospital representing its size and
         FTE (full time employees) on payroll at the hospital. The density of hospitals is heavily concentrated in the lower-left
         corner of the heatmap, reflecting that the majority of U.S. hospitals are small community facilities with less than 250 
@@ -44,7 +45,9 @@
         in nature, demanding policy solutions rather than physical ones. To understand the financial consequences of these structural 
         pressures, the following visualizations examine how different metrics, both numerical and categorical, reveal the deeper economic
         fault lines that staffing patterns alone cannot capture.
+        </p>
     </div>
+        
 </div>
 
 
@@ -57,7 +60,7 @@
 
     <div class="viz-text">
         <h1 style="font-size: 15px;">
-            Figure 2: Heatmap Correlation Matrix
+            Figure 2: Heatmap Feature Correlation Matrix
         </h1>
         <p>
         This correlation matrix reveals the relationships between the different variables that we work with and analyze
@@ -82,16 +85,16 @@
 <div class="viz-section">
 
     <div class="viz-frame">
-        <iframe src="jitterplot.html" width="100%" height="900px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+        <iframe src="boxplot_with_radio.html" width="100%" height="900px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
     </div>
 
     <div class="viz-text">
         <h1 style="font-size: 15px;">
-            Figure 3: Jitter Plot of Clinical Operating Margin by Type of Control and Size Category
+            Figure 3: Boxplot of Clinical Operating Margin by Type of Control and Size Category
         </h1>
         <p>
         <p>
-        This jitter plot investigates the Clinical Operating Margin, which is the percentage of profit derived specifically from patient care, to uncover the drivers of financial 
+        This boxplot investigates the Clinical Operating Margin, which is the percentage of profit derived specifically from patient care, to uncover the drivers of financial 
         health that hospital size failed to explain. Our initial heatmap analysis revealed that Bed Count and Operating Margin were largely uncorrelated; this visualization 
         identifies Ownership Type as the primary factor filling that gap. The data confirms that an hospital's mission is a far more potent predictor of margin than its 
         size: while there is subtle evidence of economies of scale within specific categories, as demonstrated where larger facilities (blue circles) cluster slightly further to the 
@@ -148,6 +151,9 @@
     </div>
 
     <div class="viz-text">
+        <h1 style="font-size: 15px;">
+            Figure 5: Choropleth Map of Average Net Patient Revenue per Bed by State
+        </h1>
 
         <p>
         Now we are going to look at a more refined view of the regional trend by looking at the average Net Patient Revenue per Bed by state. Because our initial research showed that total revenue was 
@@ -163,14 +169,36 @@
 
 </div>
 
-<div class="viz-section">
-    <div class="viz-frame">
-        <iframe src="hospital_sankey.html" width="100%" height="500px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+<div class="viz-section-2">
+    <div class="viz-frame-2">
+        <iframe src="hospital_sankey.html" width="100%" height="500px" frameborder="0" style="overflow:hidden;"></iframe>
     </div>
 
     <div class="viz-text">
-        <p>
-          This graph shows how hospital size connects to financial health and then to revenue performance. Small hospitals are more likely to move toward lower margin and lower revenue groups. Medium hospitals are more mixed, which means their results are not all the same. Large hospitals are more likely to move toward higher margin and higher revenue groups. This suggests that hospital size has a strong link with financial results. Bigger hospitals may have more resources, more patients, and more ways to spread costs, which can help them perform better. Smaller hospitals may face more pressure because they have fewer beds and fewer resources to handle costs. The graph also helps us see that financial health sits in the middle of this pattern. In other words, size affects margin, and margin is connected to revenue performance. This makes the chart useful because it does not only show one simple relationship. It shows a path from size to money outcomes. The main takeaway is that hospital size matters, and larger hospitals tend to be in a stronger financial position than smaller hospitals.
+        <h1 style="font-size: 15px;">
+            Figure 6: Sankey Diagram of Hospital Size, Financial Health, and Revenue Performance
+        </h1>
+        <p style="margin-bottom: 0;">
+          This final sankey diagram visually connects size with our financial performance metrics (clinical operating margin, operating expense ratio, and net patient revenue), 
+          ultimately demonstrating that size is not the primary factor to explain the cost efficiency and financial performance of the hospitals. If size was the primary driver, 
+          we would expect to see a clear flow from small hospitals to low margins and low revenue, and from large hospitals to high margins and high revenue. However, the data shows
+          a more complex pattern. While there is some flow from small hospitals to lower margin and revenue groups, there are also many small hospitals that achieve high margins and high revenue, 
+          indicating that size alone does not determine financial success. Medium hospitals show a mixed pattern, with some flowing towards higher margins and revenue, while others flow towards 
+          lower margins and revenue. Large hospitals tend to have a stronger flow towards higher margins and higher revenue, but there are still some large hospitals that struggle with low margins and low revenue. 
+          This suggests that while size may provide some advantages in terms of resources and patient volume, there are other factors such as ownership type and regional dynamics that 
+          likely play significant roles in shaping the financial outcomes of hospitals of all sizes.
+          <br>
+
+          Small hospitals are more 
+          likely to move toward lower margin and lower revenue groups. Medium hospitals are more mixed, which means their results 
+          are not all the same. Large hospitals are more likely to move toward higher margin and higher revenue groups. This suggests 
+          that hospital size has a strong link with financial results. Bigger hospitals may have more resources, more patients, and more 
+          ways to spread costs, which can help them perform better. Smaller hospitals may face more pressure because they have fewer beds
+           and fewer resources to handle costs. The graph also helps us see that financial health sits in the middle of this pattern. 
+           In other words, size affects margin, and margin is connected to revenue performance. This makes the chart useful because it 
+           does not only show one simple relationship. It shows a path from size to money outcomes. The main takeaway is that hospital 
+           size matters, and larger hospitals tend to be in a stronger financial position than smaller hospitals.
+
 
         </p>
     </div>
@@ -184,7 +212,7 @@
     Conclusions
 </h2>
 
-<p>
+<p style="font-size: 16px; line-height: 1.6;">
     The data consistently proves that we cannot expect hospitals to "size" their way out of a financial crisis. Because profitability is almost entirely decoupled from scale, simply adding more beds does 
     not solve the underlying economic math that governs a hospital’s survival. Instead, we must address the Regional Disparities in revenue and the Ownership Mandates that force public and rural 
     facilities into high-risk financial volatility. While a proprietary urban hospital might find success through market density, a rural government-owned facility is often trapped by a state-level 
