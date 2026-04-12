@@ -63,19 +63,17 @@
             Figure 2: Heatmap Feature Correlation Matrix
         </h1>
         <p>
-        This correlation matrix reveals the relationships between the different variables that we work with and analyze
-        throughout this project. During our analysis, we explore both strong and weak correlations and their relationships
-        with categorical, non-quantitative data. The strongest meaningful relationship highlighted by this visualization
-        is between Total Costs and Net Patient revenue with a score of 0.97, indicating that revenue and costs scale almost
-        perfectly together across hospitals. Number of Beds is also strongly correlated with both Total Costs and Net Patient
-        Revenue with respective scores of 0.86 and 0.84, meaning that bed count is a strong indicator of both the scale of operations
-        and revenue generation. Notably, Cost per Discharge shows almost no correlation with hospital size, challenging the 
-        assumption that larger hospitals are more efficient on a per-patient basis, which is a relationship we explore further
-        through the cost-to-charge ratio analysis. Clinical Operating Margin and Operating Expense Ratio show a perfect inverse
-        correlation of -1.00, as they are derived from the same underling values, so we exclude this relationship from further
-        analysis. On the other hand, both margin metrics have almost no correlation with any other numerical variable. However,
-        we will later explore the relationship between Clinical Operating Margin and different categorical variables.
-
+        This correlation matrix reveals the hospital size, as measured by number of beds, is most strongly associated with scale-related financial metrics
+        rather than efficiency or profitability metrics. Number of beds shows strong positive correlations with Total Costs (0.86),FTE Employees on Payroll 
+        (0.84), and Net Patient Revenye (0.84). These strong relationships suggest that larger hospitals generate more revenue but also incur proportionally 
+        higher costs and staffing demands. This pattern points to a scaling effect showing that as hospitals grow, their finaincial impact expands, as well, 
+        but not necessarily in ways that translate to improved margins. Occupancy Rate shows only a moderate relationship with bed count (0.40), indicating 
+        that simply having more beds does not gurantee they will be filled. This discovery has important implications for how hospital capacity is planned and 
+        utilized across different facility types. Most notably, Cost per Discharge (-0.03) and Clinical Operating Margin (0.02) are nearly uncorrelated with hospital
+        size, meaning that larger hospitals are not inherently more cost-efficient or profitable on a per-patient basis. This challenges the common assumption that bigger hospitals
+        benefit from economies of scale in ways that reduce per-patient costs or boost margins. Instead, these metrics appear to be driven by factors that 
+        bed count alone cannot capture. This requires a deeper investigation into what metrics provide a better explanation to the variation in profitability.
+        We later explore this relationship by further analyzing Clinical Operating Margin as well as Net Patient Revenue.
         </p>
     </div>
 
