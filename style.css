@@ -26,6 +26,7 @@ body {
 .viz-text {
     flex:1;
     padding-top: 10px;
+    margin-top: 10px !important;
 }
 
 .viz-text p {
@@ -86,21 +87,23 @@ body {
         width: 100%;
         background: linear-gradient(to left, #c1deec, #ffffff); /* Your light blue */
         padding: 30px;
-        box-sizing: border-box !important;    
+        box-sizing: border-box !important;   
+        height: auto !important; 
       }
 
-    .viz-frame-2 {
-        width: 100% !important;
-        margin-bottom: 20px;
-        text-align: center;
-    }
+.viz-frame-2 {
+    width: 100% !important;
+    text-align: center;
+    margin-bottom: 0 !important; /* Removes bottom gap of the chart */
+    height: auto !important;
+}
 
-    .viz-frame-2 iframe {
-        display: block;
-        border: none;
-        /* Adjust 650px to fit your specific chart height so it doesn't scroll */
-        height: 650px; 
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+.viz-frame-2 iframe {
+    display: block;
+    border: none;
+    /* Adjust 650px to fit your specific chart height so it doesn't scroll */
+    height: 650px; 
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
