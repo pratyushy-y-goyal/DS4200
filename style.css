@@ -5,7 +5,7 @@ p {
     line-height: 1.5;
 }
 body {
-    background-image: linear-gradient(#d2e3ee, #a0d6ed);
+    background-color: #e3f3ff;
     background-attachment: fixed; 
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -50,6 +50,7 @@ body {
     justify-content: center;
     gap: 12px;             /* Space between the boxes */
     margin-top: 25px;
+    font-family:'opensans', sans-serif;
 }
 
 /* The "Box" link styling */
@@ -100,7 +101,7 @@ body {
     padding: 30px;
     background: linear-gradient(to left, #dcf3ff, #ffffff);
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     box-sizing: border-box; /* Crucial to keep padding inside the width */
 }
 
@@ -149,7 +150,7 @@ body {
       margin-left: 180px;
       margin-right: 180px;
       border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Soft shadow for a modern look */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Soft shadow for a modern look */
     }
 
 .viz-frame-2 iframe {
