@@ -11,23 +11,47 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 
-<body>
-    <nav>
+<div id="accent-bar">
+        <nav>
         <a href = 'index.html'>Introduction</a>
         <a href = 'page2.html'>Visualizations</a>
     </nav>
 
+</div>
 
-    <h1 style="font-size: 26px; text-align: center;" >Visual Analysis</h1>
 
-<div class="viz-section">
 
-    <div class="viz-frame">
-        <iframe src="staffing_heatmap.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden"></iframe>
+<div id="visual-analysis-header" class="viz-section">
+    <h1 style="font-size: 50px; text-align: center; font-family: 'opensans', sans-serif;">
+            Visual Analysis
+    </h1>
+    <nav class="internal-nav">
+        <a href="#fig1">Figure 1: Heatmap</a> | 
+        <a href="#fig2">Figure 2: Correlation Matrix</a> | 
+        <a href="#fig3">Figure 3: Stacked Boxplot</a> | 
+        <a href="#fig4">Figure 4: Scatterplot</a> | 
+        <a href="#fig5">Figure 5: Choropleth Map</a> | 
+        <a href="#fig6">Figure 6: Sankey Diagram</a>  
+    </nav>
+</div>
+
+
+<body>
+
+<div id="fig1"></div>
+<h2 style="padding-left: 10px; font-size: 22px; margin-top: 80px !important; margin-bottom: 10px !important;">
+    Figure 1: Heatmap of Staffing Density Across Hospital 
+
+</h2>
+    
+<div class="viz-section" style="display: block !important;">
+
+    <div class="viz-frame" style="padding-left: 180px;">
+        <iframe src="staffing_heatmap.html" width="100%" height="500px" frameborder="0" scrolling="no" style="overflow:hidden"></iframe>
     </div>
     <div class="viz-text">
         <h1 style="font-size: 15px;">
-            Figure 1: Heatmap of Staffing Density Across Hospital 
+            Takeaway:
         </h1>
         <p>
         This visualization explores the relationship between the number of beds in a certain hospital representing its size and
@@ -49,18 +73,29 @@
     </div>
         
 </div>
+</div>
 
 
 
-<div class="viz-section">
+<div id="fig2">
+<h2 style="padding-left: 10px; font-size: 22px; margin-top: 80px !important; margin-bottom: 10px !important;">
+    Figure 2: Heatmap Feature Correlation Matrix
 
-    <div class="viz-frame">
-        <iframe src="heatmap.html" width="100%" height="700px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
-    </div>
+</h2>
 
-    <div class="viz-text">
+<div class="viz-section" style="display: flex !important; gap: 30px;">
+
+    <div class="viz-frame" style="flex: 3 !important;">
+        <iframe 
+                src="heatmap.html" 
+                style="width: 90%; max-width: 1000px; height: 700px; border: none; overflow: hidden; margin: 0 auto; display: block;" 
+                scrolling="no">
+            </iframe>    
+</div>
+
+    <div class="viz-text" style="flex: 1.75 !important;">
         <h1 style="font-size: 15px;">
-            Figure 2: Heatmap Feature Correlation Matrix
+            Takeaway:
         </h1>
         <p>
         This correlation matrix reveals the hospital size, as measured by number of beds, is most strongly associated with scale-related financial metrics
@@ -76,19 +111,24 @@
         We later explore this relationship by further analyzing Clinical Operating Margin as well as Net Patient Revenue.
         </p>
     </div>
-
+</div>
 </div>
 
+<h2 style="padding-left: 10px; font-size: 22px; margin-top: 80px !important; margin-bottom: 10px !important;">
+    Figure 3: Boxplot of Clinical Operating Margin by Type of Control and Size Category
 
-<div class="viz-section">
+</h2>
 
-    <div class="viz-frame">
-        <iframe src="boxplot_with_radio.html" width="100%" height="900px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+<div id="fig3">
+<div class="viz-section" style="display: flex !important;">
+
+    <div class="viz-frame" style="flex: 3 !important;">
+        <iframe src="boxplot_with_radio.html" width="100%" height="900px" scrolling="no" frameborder="0" style="overflow:hidden;"></iframe>
     </div>
 
-    <div class="viz-text">
+    <div class="viz-text" style="flex: 1.25 !important;">
         <h1 style="font-size: 15px;">
-            Figure 3: Boxplot of Clinical Operating Margin by Type of Control and Size Category
+            Takeaway: 
         </h1>
         <p>
         <p>
@@ -105,9 +145,16 @@
     </div>
 
 </div>
+</div>
+
+<div id="fig4">
+<h2 style="padding-left: 10px; font-size: 22px; margin-top: 80px !important; margin-bottom: 10px !important;">
+    Figure 4: Scatterplot showing the relationship between Operating Expense Ratio and Number of Beds, colored by Region
+
+</h2>
 
     
-<div class="viz-section">
+<div class="viz-section" style="display: block !important;">
     <div class="viz-frame" id="scatterplot-container">
         <div id="scatterplot-rural"></div>
         <div id="scatterplot-urban"></div>
@@ -124,7 +171,7 @@
     </div>
     <div class="viz-text">
         <h1 style="font-size: 15px;">
-            Figure 4: Scatterplot showing the relationship between Operating Expense Ratio and Number of Beds, colored by Region
+            Takeaway: 
         </h1>
         <p>
         Now that we’ve established that ownership is a factor that determines financial performance, we also want to explore how the region affects the day-to-day cost pressures 
@@ -140,17 +187,24 @@
     </div>
 
 </div>
+</div>
+
+<div id="fig5">
+<h2 style="padding-left: 10px; font-size: 22px; margin-top: 80px !important; margin-bottom: 10px !important;">
+    Figure 5: Choropleth Map of Average Net Patient Revenue per Bed by State
+
+</h2>
 
 
-<div class="viz-section" style="display: block !important;">
+<div class="viz-section">
 
     <div class="viz-frame">
-        <iframe src="choropleth_with_histogram.html" width="100%" height="500px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+        <iframe src="choropleth_with_histogram.html" height="500px" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
     </div>
 
     <div class="viz-text">
         <h1 style="font-size: 15px;">
-            Figure 5: Choropleth Map of Average Net Patient Revenue per Bed by State
+            Takeaway: 
         </h1>
 
         <p>
@@ -166,15 +220,23 @@
     </div>
 
 </div>
+</div>
+
+<div id="fig6">
+<h2 style="padding-left: 10px; font-size: 22px; margin-top: 80px !important; margin-bottom:20px !important;">
+    Figure 6: Sankey Diagram of Hospital Size, Financial Health, and Revenue Performance
+
+</h2>
 
 <div class="viz-section-2">
+    
     <div class="viz-frame-2">
-        <iframe src="hospital_sankey.html" width="100%" height="500px" frameborder="0" style="overflow:hidden;"></iframe>
+        <iframe src="hospital_sankey.html" height="500px" frameborder="0" style="overflow:hidden; text-align: center;"></iframe>
     </div>
 
     <div class="viz-text">
         <h1 style="font-size: 15px;">
-            Figure 6: Sankey Diagram of Hospital Size, Financial Health, and Revenue Performance
+            Takeaway: 
         </h1>
         <p style="margin-bottom: 0;">
           This final sankey diagram visually connects size with our financial performance metrics (clinical operating margin, operating expense ratio, and net patient revenue), 
@@ -191,29 +253,42 @@
     </div>
 
 </div>
-
-
-
-
-<h2 style="margin-top: 30px; text-align:center">
-    Conclusions
-</h2>
-
-<p style="font-size: 16px; line-height: 1.6;">
-    The data consistently proves that we cannot expect hospitals to "size" their way out of a financial crisis. Because profitability is almost entirely decoupled from scale, simply adding more beds does 
-    not solve the underlying economic math that governs a hospital’s survival. Instead, we must address the Regional Disparities in revenue and the Ownership Mandates that force public and rural 
-    facilities into high-risk financial volatility. While a proprietary urban hospital might find success through market density, a rural government-owned facility is often trapped by a state-level 
-    revenue ceiling that no amount of expansion can break. To save the healthcare system, the focus must shift from physical expansion to state-level policy changes, such as Medicaid reform and targeted 
-    rural subsidies, that address the geographic and mission-driven hurdles these institutions face. Ultimately, if the goal is a stable healthcare system, we must stop building bigger hospitals and start 
-    building better policies that protect the facilities we already have.
-</p>
-
-<div id="authors">
-    <h3>Authors</h3>
-    <p>Lily Wong | Elizabeth Colby | Pratyush Goyal</p>
 </div>
 
 
 
+
+<div class="viz-section">
+
+    <h1 style="font-family: 'opensans', sans-serif;">
+        Conclusions
+    </h1>
+
+    <p style="margin:auto">
+        The data consistently proves that we cannot expect hospitals to "size" their way out of a financial crisis. Because profitability is almost entirely decoupled from scale, simply adding more beds does 
+        not solve the underlying economic math that governs a hospital’s survival. Instead, we must address the Regional Disparities in revenue and the Ownership Mandates that force public and rural 
+        facilities into high-risk financial volatility. While a proprietary urban hospital might find success through market density, a rural government-owned facility is often trapped by a state-level 
+        revenue ceiling that no amount of expansion can break. To save the healthcare system, the focus must shift from physical expansion to state-level policy changes, such as Medicaid reform and targeted 
+        rural subsidies, that address the geographic and mission-driven hurdles these institutions face. Ultimately, if the goal is a stable healthcare system, we must stop building bigger hospitals and start 
+        building better policies that protect the facilities we already have.
+    </p>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
 </body>
+
+<div id="authors">
+    <h3>Authors</h3>
+    <p id="author-names">Lily Wong | Elizabeth Colby | Pratyush Goyal</p>
+</div>
 </html>
