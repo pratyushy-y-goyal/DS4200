@@ -17,18 +17,17 @@ body {
 
 #accent-bar {
     background-color: #2c3e50;
-    width: 100vw !important; /* Force it to be the full width of the screen */
-    
-    /* These three lines pull it back to the absolute left edge */
+    width: 100vw !important;
     position: relative;
+    
+    /* This is a more robust way to center a breakout element */
     left: 50%;
-    right: 50%;
     margin-left: -50vw !important;
-    margin-right: -50vw !important;
-
+    
     padding: 20px 0;
     box-sizing: border-box !important;
-    font-family: "opensans", sans-serif;
+    font-family: 'opensans', sans-serif;
+    /* Ensure no parent container hides the 'overflow' */
 }
 
 #accent-bar nav {
