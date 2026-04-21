@@ -65,7 +65,7 @@ chart = heatmap.properties(
         subtitleFontSize=12,
         anchor='middle'
     ),
-    width=500,
+    width=700,
     height=400
 ).configure_axis(
     labelFontSize=11,
