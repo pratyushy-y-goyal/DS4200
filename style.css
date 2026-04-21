@@ -90,7 +90,7 @@ body {
 .viz-section {
     
     /* Calculate width to account for the 180px margins (100% - 360px) */
-    width: calc(100% - 360px) !important;
+    width: calc(100% - 180px) !important;
     
     /* Center the container on the page */
     margin-left: auto !important;
@@ -103,6 +103,14 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     box-sizing: border-box; /* Crucial to keep padding inside the width */
+}
+
+[id^="fig"] > h2,
+[id^="fig"] > p {
+    width: calc(100% - 180px);
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box;
 }
 
 .viz-frame {

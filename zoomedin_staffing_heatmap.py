@@ -13,16 +13,16 @@ df_clean = df[['Hospital Name', 'Number of Beds', 'FTE - Employees on payroll', 
 
 df_clean = df_clean[
     (df_clean['Number of Beds'] > 0) &
-    (df_clean['Number of Beds'] < 2000) &
+    (df_clean['Number of Beds'] < 200) &
     (df_clean['FTE - Employees on payroll'] > 0) &
-    (df_clean['FTE - Employees on payroll'] < 30000)
+    (df_clean['FTE - Employees on payroll'] < 1500)
 ]
 
 df_clean['Location'] = df_clean['Rural Versus Urban'].map({'R': 'Rural', 'U': 'Urban'})
 
 # Pre-bin in pandas so each rect cell has explicit start/end values for correct tooltips
-beds_edges = np.arange(0, df_clean['Number of Beds'].max() + 50, 50)
-fte_edges = np.arange(0, df_clean['FTE - Employees on payroll'].max() + 1000, 1000)
+beds_edges = np.arange(0, df_clean['Number of Beds'].max() + 10, 10)
+fte_edges = np.arange(0, df_clean['FTE - Employees on payroll'].max() + 100, 100)
 beds_cut = pd.cut(df_clean['Number of Beds'], bins=beds_edges, include_lowest=True)
 fte_cut = pd.cut(df_clean['FTE - Employees on payroll'], bins=fte_edges, include_lowest=True)
 
@@ -59,7 +59,7 @@ heatmap = alt.Chart(df_agg).mark_rect().encode(
 
 chart = heatmap.properties(
     title=alt.TitleParams(
-        text='Staffing Density vs. Hospital Size',
+        text='Zoomed In - Staffing Density vs. Hospital Size',
         subtitle='Density of hospitals by FTE on Payroll and Number of Beds',
         fontSize=15,
         subtitleFontSize=12,
@@ -72,5 +72,5 @@ chart = heatmap.properties(
     titleFontSize=12
 )
 
-output_path = "/Users/elizabethc/ds4200/Group Project - ds4200/staffing_heatmap.html"
+output_path = "/Users/elizabethc/ds4200/Group Project - ds4200/zoomed_staffing_heatmap.html"
 chart.save(output_path)
