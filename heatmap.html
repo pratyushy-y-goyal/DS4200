@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        #viz.vega-embed{
-            width: 100% !important;
+        body {
             display: flex;
             justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        #vis .vega-embed {
             padding: 0 !important;
         }
         #vis svg {
             max-width: 100% !important;
             height: auto !important;
         }
-    </style>    
+    </style>
     <script src ="https://cdn.jsdelivr.net/npm/vega@6"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
@@ -24,13 +27,12 @@
     <div id = "vis"></div>
     <script>
         const colorOrder = [
-            "Number of Beds", "Cost per Discharge", "Cost per Bed", "FTE - Employees on payroll", "Clinical Operating Margin", "Operating Expense Ratio","Occupancy Rate", "Net Income", "Total Costs", "Net Patient Revenue"
+            "Number of Beds", "Cost per Bed", "FTE - Employees on payroll", "Clinical Operating Margin", "Operating Expense Ratio","Occupancy Rate", "Net Income", "Total Costs", "Net Patient Revenue"
         ];
 
         d3.csv("Hospital_Provider_Cost_Report_2023_updated.csv").then(function(raw) {
             const data = raw.map(d => ({
                 "Number of Beds":               +d["Number of Beds"],
-                "Cost per Discharge":           +d["Total Costs"] / +d["Total Discharges (V + XVIII + XIX + Unknown)"],
                 "Cost per Bed":                 +d["Total Costs"] / +d["Number of Beds"],
                 "FTE - Employees on payroll":   +d["FTE - Employees on Payroll"],
                 "Clinical Operating Margin":    +d["Net Income from Service to Patients"] / +d["Net Patient Revenue"],
