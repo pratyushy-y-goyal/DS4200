@@ -72,5 +72,5 @@ chart = heatmap.properties(
     titleFontSize=12
 )
 
-output_path = "/Users/elizabethc/ds4200/Group Project - ds4200/staffing_heatmap.html"
+output_path = "/Users/elizabethc/ds4200/Group Project - ds4200/figure_1_1.html"
 chart.save(output_path)
