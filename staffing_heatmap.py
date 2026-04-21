@@ -20,21 +20,40 @@ df_clean = df_clean[
 
 df_clean['Location'] = df_clean['Rural Versus Urban'].map({'R': 'Rural', 'U': 'Urban'})
 
-# Bin the axes for heatmap cells
-heatmap = alt.Chart(df_clean).mark_rect().encode(
-    x=alt.X('Number of Beds:Q',
-            bin=alt.Bin(maxbins=40),
-            title='Number of Beds (Hospital Size)'),
-    y=alt.Y('FTE - Employees on payroll:Q',
-            bin=alt.Bin(maxbins=40),
-            title='FTE - Employees on payroll'),
-    color=alt.Color('count():Q',
+# Pre-bin in pandas so each rect cell has explicit start/end values for correct tooltips
+beds_edges = np.arange(0, df_clean['Number of Beds'].max() + 50, 50)
+fte_edges = np.arange(0, df_clean['FTE - Employees on payroll'].max() + 1000, 1000)
+beds_cut = pd.cut(df_clean['Number of Beds'], bins=beds_edges, include_lowest=True)
+fte_cut = pd.cut(df_clean['FTE - Employees on payroll'], bins=fte_edges, include_lowest=True)
+
+df_binned = df_clean.copy()
+df_binned['Beds Start'] = [iv.left for iv in beds_cut]
+df_binned['Beds End'] = [iv.right for iv in beds_cut]
+df_binned['FTE Start'] = [iv.left for iv in fte_cut]
+df_binned['FTE End'] = [iv.right for iv in fte_cut]
+
+df_agg = (
+    df_binned
+    .groupby(['Beds Start', 'Beds End', 'FTE Start', 'FTE End'], observed=True)
+    .size()
+    .reset_index(name='Count')
+)
+
+df_agg['Beds Range'] = df_agg['Beds Start'].apply(lambda x: f'{abs(x):.0f}') + ' - ' + df_agg['Beds End'].apply(lambda x: f'{abs(x):.0f}')
+df_agg['FTE Range'] = df_agg['FTE Start'].apply(lambda x: f'{abs(x):.0f}') + ' - ' + df_agg['FTE End'].apply(lambda x: f'{abs(x):.0f}')
+
+heatmap = alt.Chart(df_agg).mark_rect().encode(
+    x=alt.X('Beds Start:Q', bin='binned', title='Number of Beds (Hospital Size)'),
+    x2=alt.X2('Beds End:Q'),
+    y=alt.Y('FTE Start:Q', bin='binned', title='FTE - Employees on payroll'),
+    y2=alt.Y2('FTE End:Q'),
+    color=alt.Color('Count:Q',
                     scale=alt.Scale(scheme='blues'),
                     title='Number of Hospitals'),
     tooltip=[
-        alt.Tooltip('Number of Beds:Q', bin=True, title='Beds Range'),
-        alt.Tooltip('FTE - Employees on payroll:Q', bin=True, title='FTE - Employees on payroll'),
-        alt.Tooltip('count():Q', title='Number of Hospitals')
+        alt.Tooltip('Beds Range:N', title='Beds Range'),
+        alt.Tooltip('FTE Range:N', title='FTE Range'),
+        alt.Tooltip('Count:Q', title='Number of Hospitals')
     ]
 )
 
@@ -46,7 +65,7 @@ chart = heatmap.properties(
         subtitleFontSize=12,
         anchor='middle'
     ),
-    width=600,
+    width=500,
     height=400
 ).configure_axis(
     labelFontSize=11,
