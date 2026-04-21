@@ -30,7 +30,7 @@
             "Number of Beds", "Cost per Bed", "FTE - Employees on payroll", "Clinical Operating Margin", "Operating Expense Ratio","Occupancy Rate", "Net Income", "Total Costs", "Net Patient Revenue"
         ];
 
-        d3.csv("Hospital_Provider_Cost_Report_2023_updated.csv").then(function(raw) {
+        d3.csv("../Hospital_Provider_Cost_Report_2023_updated.csv").then(function(raw) {
             const data = raw.map(d => ({
                 "Number of Beds":               +d["Number of Beds"],
                 "Cost per Bed":                 +d["Total Costs"] / +d["Number of Beds"],
