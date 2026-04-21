@@ -46,31 +46,23 @@
     <b>Interaction:</b> Hover over the heatmap to see the density of hospitals with specific combinations of bed count and FTE employees. 
 </p>
     
-<div class="viz-section" style="display: block !important;">
+<div class="viz-section" style="display: flex !important; gap: 0px;">
 
-    <div class="viz-frame" style="padding-left: 180px;">
+    <div class="viz-frame" style="flex: 3 !important;">
         <iframe src="staffing_heatmap.html" width="100%" height="500px" frameborder="0" scrolling="no" style="overflow:hidden"></iframe>
     </div>
-    <div class="viz-text">
+    <div class="viz-text" style="flex: 1 !important;">
         <h1 style="font-size: 15px;">
             Takeaway:
         </h1>
         <p>
         This visualization explores the relationship between the number of beds in a certain hospital representing its size and
-        FTE (full time employees) on payroll at the hospital. The density of hospitals is heavily concentrated in the lower-left
-        corner of the heatmap, reflecting that the majority of U.S. hospitals are small community facilities with less than 250 
-        beds and correspondingly lean staffing levels. As bed count increases, FTE rises alongside it, but the distribution begins
-        to fan out noticeably around the 200-500 bed range, where variability in staffing decisions becomes much greater, suggesting
-        that hospitals of similar size can operate with vastly different workforce structures, and that size alone does not determine
-        staffing efficiency. Outliers in the upper-left region, with high FTE relative to bed count, likely represent academic medical
-        centers where staffing demands extend well beyond typical patient volume into research and specialized care. More importantly,
-        this wide spread in the data reveals that there is no universal "right" ratio of beds to staff, and that rural and smaller 
-        hospitals are often required to maintain minimum staffing thresholds regardless of patient volume, creating fixed labor costs
-        that cannot be offset through expansion. This reinforces a key finding across all visualizations that scaling up physical 
-        capacity does not translate into financial stability, and the staffing burdens facing smaller, more rural facilities are structural
-        in nature, demanding policy solutions rather than physical ones. To understand the financial consequences of these structural 
-        pressures, the following visualizations examine how different metrics, both numerical and categorical, reveal the deeper economic
-        fault lines that staffing patterns alone cannot capture.
+        FTE (full time employees) on payroll at the hospital. Concentrated in the lower-left, the data shows that most U.S. hospitals are small facilities (< 250 beds) 
+        with lean staffing. While FTEs generally scale with bed count, the distribution fans out significantly between 200–500 beds, suggesting that size alone 
+        does not dictate staffing structures. Upper-left outliers likely represent academic medical centers, where research and specialized care require staffing 
+        levels that exceed standard patient volumes. <b>Overall, the visualization demonstrates that generally the number of beds and FTE are correlated with one another; thus,
+        when choosing the variable to represent hospital size, we will be using the number of beds as it is more commonly used in healthcare research</b>
+    
         </p>
     </div>
         
@@ -88,9 +80,9 @@
     <b>Interaction:</b> Hover over the heatmap to see the correlation values between different features. 
 </p>
 
-<div class="viz-section" style="display: flex !important; gap: 30px;">
+<div class="viz-section" style="display: flex !important; gap: 0px;">
 
-    <div class="viz-frame" style="flex: 3 !important;">
+    <div class="viz-frame" style="flex: 3.75 !important;">
         <iframe 
                 src="heatmap.html" 
                 style="width: 90%; max-width: 1000px; height: 700px; border: none; overflow: hidden; margin: 0 auto; display: block;" 
@@ -103,17 +95,13 @@
             Takeaway:
         </h1>
         <p>
-        This correlation matrix reveals the hospital size, as measured by number of beds, is most strongly associated with scale-related financial metrics
-        rather than efficiency or profitability metrics. Number of beds shows strong positive correlations with Total Costs (0.86),FTE Employees on Payroll 
-        (0.84), and Net Patient Revenue (0.84). These strong relationships suggest that larger hospitals generate more revenue but also incur proportionally 
-        higher costs and staffing demands. This pattern points to a scaling effect showing that as hospitals grow, their financial impact expands, as well, 
-        but not necessarily in ways that translate to improved margins. Occupancy Rate shows only a moderate relationship with bed count (0.40), indicating 
-        that simply having more beds does not guarantee they will be filled. This discovery has important implications for how hospital capacity is planned and 
-        utilized across different facility types. Most notably, Cost per Discharge (-0.03) and Clinical Operating Margin (0.02) are nearly uncorrelated with hospital
-        size, meaning that larger hospitals are not inherently more cost-efficient or profitable on a per-patient basis. This challenges the common assumption that bigger hospitals
+        This correlation matrix is used to determine which variables will be used for the subsequent analysis, depending on their relationship to the number of beds.
+         Number of beds shows strong positive correlations with FTE Employees on Payroll 
+        (0.84), and Net Patient Revenue (0.84). Conversely, certain variables show nearly no correlation with bed count; specifically, the operating expense ratio (-0.02) and clinical operating margin (0.02) 
+        remain stagnant regardless of size, meaning that scaling up a facility does not automatically translate into better profit margins. This challenges the common assumption that bigger hospitals
         benefit from economies of scale in ways that reduce per-patient costs or boost margins. Instead, these metrics appear to be driven by factors that 
-        bed count alone cannot capture. This requires a deeper investigation into what metrics provide a better explanation to the variation in profitability.
-        We later explore this relationship by further analyzing Clinical Operating Margin as well as Net Patient Revenue.
+        bed count alone cannot capture. This requires a deeper investigation into what metrics provide a better explanation to the variation in profitability and cost efficiency.
+        <b>Based on these results, we will explore the relationship between bed count and clinical operating margin, net patient revenue per bed, and operating expense ratio in the subsequent visualizations.</b>
         </p>
     </div>
 </div>
@@ -141,14 +129,15 @@
         </h1>
         <p>
         <p>
-        This boxplot investigates the Clinical Operating Margin, which is the percentage of profit derived specifically from patient care, to uncover the drivers of financial 
-        health that hospital size failed to explain. Our initial heatmap analysis revealed that Bed Count and Operating Margin were largely uncorrelated; this visualization 
-        identifies Ownership Type as the primary factor filling that gap. The data confirms that an hospital's mission is a far more potent predictor of margin than its 
-        size: while there is subtle evidence of economies of scale within specific categories, as demonstrated where larger facilities (blue circles) cluster slightly further to the 
-        right than smaller ones (dark orange circles) in the proprietary rows. However, the size trend is secondary to the overall ownership patterns. Proprietary hospitals show a dense 
-        concentration in the positive margin range regardless of bed count, whereas government-owned hospitals are consistently clustered in the negative zone, suggesting 
-        that because public hospitals must treat everyone regardless of cost, they face financial limits that even large-scale operations cannot overcome. Ultimately, the plot demonstrates that because clinical operating 
-        margin does not respond significantly to increases in size, ownership type could be an explanatory factor for a hospital's financial trajectory
+        Our initial heatmap analysis revealed that the number of beds and clinical operating margin were largely uncorrelated; 
+        this visualization supports those initial results. <b>The visualization suggests that the ownership type (i.e. the hospital’s 
+        mission) is a better predictor of hospital financial performance than the number of beds</b>. There is subtle evidence of 
+        economies of scale, which is when the cost per patient decreases as the hospital gets larger, demonstrated where larger 
+        facilities cluster slightly further to the right than smaller ones in the proprietary 
+        rows. However, the size trend is secondary to the overall ownership pattern. The visualization has proprietary hospitals 
+        showing a dense concentration in the positive margin (generating profit from patients) regardless of bed count, whereas government-owned hospitals are 
+        consistently clustered in the negative zone, suggesting that because public hospitals must treat everyone regardless of cost, 
+        increasing the number of beds will not mitigate that cost. 
         
         </p>
     </div>
@@ -183,15 +172,15 @@
             Takeaway: 
         </h1>
         <p>
-        Now that we’ve established that ownership is a factor that determines financial performance, we also want to explore how the region affects the day-to-day cost pressures 
-        hospitals face. This scatterplot examines the relationship between hospital size and the Operating Expense Ratio (OER), encoding each point based on region. The OER is a metric to determine
-        how much profit a company retains after covering its daily operational costs. We chose to analyze OER because, like our earlier clincial operating margin analysis, it showed no strong correlation with size, which suggests other factors might be involved.
-        Even within the same ownership category, we see a wide spread of performance, suggesting that while ownership defines the strategy of the hospital, the region defines the opportunity. A "for-profit hospital" in a struggling rural area faces fundamentally different hurdles, such as 
-        low patient volume and high recruitment costs, than one in a thriving urban center. This is most visible in the 0–200 bed range, where rural hospitals (blue) 
-        predominantly occupy the "high-expense" zone above the 1.0 break-even line, while urban hospitals (orange) cluster toward the more efficient bottom. 
-        The big takeaway here is that being "big" does not make a hospital efficient; rather, being "urban" provides a volume-driven density advantage that rural hospitals 
-        simply cannot access, regardless of how many beds they add.
-
+        Another variable that we saw was uncorrelated with the number of beds was operating expense ratio. While ownership has been established 
+        as a primary driver of financial performance, this suggests that variables beyond hospital size may also exert significant influence on 
+        cost efficiency. One of the variables that we are curious to look at is regional differences, specifically how operating expense ratio 
+        differs between rural and urban hospitals. The data reveals that operating expense ratios remain largely stagnant regardless of hospital size, 
+        reinforcing our initial findings. <b>However, the geographic variance in the plot suggests that a hospital's region may play a bigger role on 
+        hospital efficiency than size alone</b>. This is most visible in the 0–200 bed range, where rural hospitals (blue) predominantly occupy the 
+        "high-expense" zone above the 1.0 break-even line, while urban hospitals (orange) cluster below the 1.0 line, representing greater hospital 
+        efficiency. Thus, hospital size alone does not guarantee efficiency; rather, urban location provides a volume-driven density advantage that 
+        rural facilities cannot replicate simply by adding beds.
         </p>
     </div>
 
@@ -217,13 +206,14 @@
         </h1>
 
         <p>
-        Now we are going to look at a more refined view of the regional trend by looking at the average Net Patient Revenue per Bed by state. Because our initial research showed that total revenue was 
-        highly correlated with the number of beds, we normalized the data to see the true value of a single bed in different parts of the country without the bias of hospital size. This map completes 
-        the puzzle by showing that each state has a revenue ceiling, which is the maximum amount of revenue a business can generate given its current capacity. We can see a massive disparity between the 
-        high-revenue Pacific Northwest and Northeast and the deep blue areas of the South, like Louisiana and Mississippi. These low-revenue states often have higher concentrations of rural hospitals 
-        that are already struggling with high costs and a large number of uninsured patients. The big takeaway here is that geography creates a hard revenue ceiling that overrides everything else; 
-        while ownership defines a hospital’s goals and size provides the scale, the regional environment ultimately defines the opportunity for survival. If a hospital is in a low-revenue state, it 
-        doesn't matter how large it grows or how much its owners want to make a profit, the money simply isn't there to be collected.
+        While the rural-urban split provides a broad baseline, we can obtain a more refined understanding of these geographic pressures by 
+        examining performance at the state level. Building on the finding that region drives cost efficiency, we want to see if geography 
+        exerts a similar influence on net patient revenue; even though revenue is tied to size, we want to know if location significantly dictates 
+        financial performance. <b>As such, the map suggests each state has a revenue ceiling, which is the maximum amount of revenue a business can 
+        generate given its current capacity.</b> We can see a massive disparity between the high-revenue Pacific Northwest and Northeast and the low-revenue 
+        areas of the South, like Louisiana and Mississippi. While ownership defines a hospital’s goals and size provides the scale, the regional environment 
+        ultimately defines the opportunity for survival. If a hospital is in a low-revenue state, it doesn't matter how large it grows or how much its 
+        owners want to make a profit, the money simply isn't there to be collected.
 
         </p>
     </div>
@@ -270,23 +260,37 @@
 
 
 <div class="viz-section">
-
     <h1 style="font-family: 'opensans', sans-serif;">
         Conclusions
     </h1>
-
     <p style="margin:auto">
-        The data consistently proves that we cannot expect hospitals to "size" their way out of a financial crisis. Because profitability is almost entirely decoupled from scale, simply adding more beds does 
-        not solve the underlying economic math that governs a hospital’s survival. Instead, we must address the Regional Disparities in revenue and the Ownership Mandates that force public and rural 
+        The data consistently proves that just because hospitals are large does not necessarily mean they are financially successful. In other words, simply adding more beds does 
+        not solve the underlying economic math that governs a hospital’s survival. Instead, we must address the regional disparities in net patient revenue and the ownership controls that force public and rural 
         facilities into high-risk financial volatility. While a proprietary urban hospital might find success through market density, a rural government-owned facility is often trapped by a state-level 
-        revenue ceiling that no amount of expansion can break. To save the healthcare system, the focus must shift from physical expansion to state-level policy changes, such as Medicaid reform and targeted 
-        rural subsidies, that address the geographic and mission-driven hurdles these institutions face. Ultimately, if the goal is a stable healthcare system, we must stop building bigger hospitals and start 
-        building better policies that protect the facilities we already have.
+        revenue ceiling that no amount of expansion can break. To preserve essential healthcare infrastructure, the focus must shift from physical expansion to state-level policy changes, such as Medicaid reform and targeted 
+        rural subsidies, that address the geographic and mission-driven hurdles these institutions face. In other words, a hospital’s survival is determined less by the number of beds and 
+        more by the economic and political boundaries that surround them.
     </p>
 
     </div>
+</div>
 
+<div class="viz-section">
+    <h1 style="font-family: 'opensans', sans-serif;">
+        Future Work
+    </h1>
+    <p style="margin:auto">
+        While this analysis provides a critical baseline, the scope of the project was necessarily limited by the available variables and the cross-sectional nature of 
+        the dataset. Future research should integrate a longitudinal perspective, comparing hospital performance across multiple years to assess how shifting state-level 
+        policies, such as Medicaid expansion or changes in rural subsidy structures, impact financial trajectories over time. Additionally, it is essential to explore 
+        other financial metrics to determine if hospital size exerts an influence that wasn't apparent in this initial study. 
+        Beyond size, integrating simpler operational factors like facility age, payer mix, and the number of specialized departments would 
+        provide a more nuanced understanding of the true drivers of cost efficiency/financial performance. Ultimately, this would help us see whether a hospital's 
+        financial struggle is a permanent fact of its location or a problem that can be fixed with the right policy changes.
+        
+    </p>
 
+    </div>
 </div>
 
 
