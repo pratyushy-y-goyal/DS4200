@@ -90,7 +90,7 @@ body {
 .viz-section {
     
     /* Calculate width to account for the 180px margins (100% - 360px) */
-    width: calc(100% - 180px) !important;
+    width: calc(100% - 360px) !important;
     
     /* Center the container on the page */
     margin-left: auto !important;
